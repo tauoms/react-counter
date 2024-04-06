@@ -1,10 +1,13 @@
-function App() {
+import Counter from "./Counter"
+import Header from "./Header"
 
+function App() {
   return (
     <>
-    <div>Hello World</div>
+      <Header />
+      <Counter />
     </>
-  )
+  );
 }
 
 export default App
