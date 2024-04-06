@@ -7,12 +7,34 @@ const Counter = () => {
 
     const handleAttack = () => {
         // alert('Attack is clicked!');
-        setCounter((preCounter) => preCounter + 1);
+        setCounter((preCounter) => {
+            let newCount = preCounter + Math.round(Math.random()* 10);
+            return newCount;
+        });
     };
     const handleDefence = () => {
         // alert('Defend is clicked!');
-        setCounter((preCounter) => preCounter - 1);
+        setCounter((preCounter) => {
+            let newCount = preCounter - Math.round(Math.random()* 10);
+            return newCount;
+        });
     };
+
+    const handleReset = () => {
+        setCounter(0);
+    };
+
+    const handleRandomPlay = () => {
+        let playMode = Math.round(Math.random());
+        if(playMode === 0) {
+            handleAttack();
+        } else {
+            handleDefence();
+        }
+
+        // playMode === 0 ? handleAttack() : handleDefence();
+    };
+
   return (
     <div className="row text-white text-center">
         <h1>Counter: {counter}</h1>
@@ -35,8 +57,8 @@ const Counter = () => {
         </div>
 
         <div className="col-12 col-md-4 offset-md-4">
-            <button className="btn btn-secondary w-100 mt-2">Random Play</button>
-            <button className="btn btn-warning w-100 mt-2">Reset</button>
+            <button onClick={handleRandomPlay} className="btn btn-secondary w-100 mt-2">Random Play</button>
+            <button onClick={handleReset} className="btn btn-warning w-100 mt-2">Reset</button>
         </div>
     </div>
     );
